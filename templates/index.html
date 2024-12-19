@@ -18,7 +18,7 @@
     <div class="task">
         <h2>タイトル : {{ task.title }}</h2>
         <p>詳細 : {{ task.details }}</p>
-
+        
         {% if edit_task and edit_task.id == task.id %}
         <form action="/update/{{ task.id }}" method="POST">
             <label for="title">Title</label>
