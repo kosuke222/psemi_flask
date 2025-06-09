@@ -1,2 +1,7 @@
 instance/
-venv/
+venv/"__pycache__" 
+"venv/" 
+"*.db"  # todo.dbなどのDBファイルをGit管理から除外
+"*.pyc" 
+"flask_session/"  # セッション関連のファイルも除外（もし使わないなら）
+"instance/"  # Flaskのインスタンスフォルダも除外
