@@ -1,3 +1,6 @@
+/* style.css */
+
+/* 全体の基本設定 */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,69 +9,106 @@ body {
     color: #333;
 }
 
+/* h1 (ログイン成功画面などで使用) */
 h1 {
     text-align: center;
     margin-top: 20px;
     color: #555;
 }
 
-.form {
-    max-width: 600px;
-    margin: 20px auto;
+/* ログインフォームのコンテナ */
+#login-form {
+    max-width: 400px;
+    margin: 50px auto;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.form input[type="text"], .form input[type="submit"] {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px auto;
+/* ログインフォーム内の見出し */
+#login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ログインフォームのレイアウト */
+#login-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ログインフォームのラベル */
+#login-form label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* ログインフォームの入力フィールドとボタンの共通スタイル */
+#login-form input[type="text"],
+#login-form input[type="password"],
+#login-form input[type="submit"],
+#login-form input[type="checkbox"], /* チェックボックスは今回は使用しないが、汎用性を考慮して残す */
+#login-form button { /* 登録ボタンなどで使用 */
+    margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-.form input[type="submit"] {
-    background-color: #007bff;
+/* フォームの送信ボタンと通常のボタンのスタイル */
+#login-form input[type="submit"],
+#login-form button {
+    background-color: #007bff; /* 青色 */
     color: #fff;
-    border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border: none;
 }
 
-.form input[type="submit"]:hover {
-    background-color: #0056b3;
+/* ホバー時のスタイル */
+#login-form input[type="submit"]:hover,
+#login-form button:hover {
+    background-color: #0056b3; /* 濃い青色 */
 }
 
-.task {
-    max-width: 600px;
-    margin: 10px auto;
+/* ログイン成功画面用のスタイル (login_success.htmlでh1とp要素が使われる想定) */
+/* このスタイルはlogin_success.htmlの<style>タグに直接記述しても良いが、一元管理のためにここに置く */
+/* login_success.htmlのスタイルは以前の回答でより詳細に設定されているため、
+   もしそちらを優先したい場合は、そのCSSを直接login_success.htmlに貼り付けてください。
+   ここでは、汎用的なh1と、シンプルさを保つため、追加のスタイルは控えめにしておきます。
+   もしlogin_success.htmlのデザインをもっと凝りたい場合は、そのHTMLファイル内に<style>ブロックを追加するか、
+   専用のCSSクラスをここで定義してください。
+*/
+.login-success-container {
+    max-width: 400px;
+    margin: 50px auto;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 中央揃え */
 }
-
-.task h2 {
-    margin: 0;
+.login-success-container h1 {
+    color: #28a745; /* 緑色 */
+    margin-bottom: 20px;
+}
+.login-success-container p {
+    font-size: 1.1em;
+}
+.login-success-container a {
+    display: block;
+    margin-top: 30px;
     color: #007bff;
-}
-
-.task p {
-    margin: 5px 0 10px;
-}
-
-.task a {
     text-decoration: none;
-    margin-right: 10px;
-    color: #007bff;
+    font-weight: bold;
 }
-
-.task a:hover {
+.login-success-container a:hover {
     text-decoration: underline;
 }
 
+/* 水平線（区切り線） */
 hr {
     border: none;
     border-top: 1px solid #ddd;
