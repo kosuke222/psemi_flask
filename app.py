@@ -25,6 +25,10 @@ def create_tables():
     conn.close()
 
 # ---------------- ルーティング ------------------
+@app.route('/') # これを追加/修正
+def index():
+    return redirect(url_for('login'))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error_message = None
