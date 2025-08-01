@@ -12,7 +12,6 @@ def get_db_connection():
 
 def create_tables():
     conn = get_db_connection()
-    # usersテーブルのみを作成します
     conn.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,7 +24,7 @@ def create_tables():
     conn.close()
 
 # ---------------- ルーティング ------------------
-@app.route('/') # これを追加/修正
+@app.route('/')
 def index():
     return redirect(url_for('login'))
 
@@ -42,9 +41,7 @@ def login():
             return render_template('login.html', error_message=error_message)
 
         conn = get_db_connection()
-        # 注意: このSQLクエリはSQLインジェクションの脆弱性を含んでいます。
-        # 教育目的のため、元のコードの記述を維持しています。
-        # 実際の本番環境では、プレースホルダを使用した安全なクエリを使用してください。
+
         sql = f"SELECT id, userid, super FROM users WHERE userid = '{userid}' AND pwd = '{pwd}'"
         user = conn.execute(sql).fetchone()
         conn.close()
@@ -59,9 +56,7 @@ def login():
 
 @app.route('/login_success')
 def login_success():
-    """
-    ログイン成功時に表示されるページ。
-    """
+
     return render_template('login_success.html')
 
 @app.route('/register', methods=['POST'])
@@ -79,11 +74,11 @@ def register():
     finally:
         conn.close()
 
-    # ユーザー登録後はログインページへリダイレクト
+
     return redirect(url_for("login"))
 
 # ---------------- メイン ------------------
 if __name__ == "__main__":
     with app.app_context():
-        create_tables() # アプリケーション起動時にusersテーブルを作成
+        create_tables() 
     app.run(debug=True)
